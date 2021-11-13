@@ -1,0 +1,10 @@
+{
+    "dev": {
+        "django_settings": "makerspace.settings",
+        "profile_name": "dms",
+        "project_name": "makerspace",
+        "runtime": "python3.8",
+        "slim_handler": "false",
+        "s3_bucket": "spacetime-zappa-qc0a6gici"
+    }
+}

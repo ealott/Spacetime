@@ -1,0 +1,14 @@
+{
+    "python.linting.mypyEnabled": false,
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "spacetime_sqlite",
+            "database": "${workspaceFolder:spacetime}/makerspace/db.sqlite3"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}

@@ -1,0 +1,5 @@
+__pycache__/
+makerspace/handler_venv/
+venv/
+env/
+makerspace/db.sqlite3
