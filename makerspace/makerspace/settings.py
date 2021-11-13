@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -34,6 +36,8 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'spacetime.apps.SpacetimeConfig',
     'rest_framework',
+    'schedule',
+    'djangobower',
     'django_s3_sqlite',
     'django_s3_storage',
     'django.contrib.admin',
@@ -67,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                "django.template.context_processors.request",
             ],
         },
     },
@@ -140,7 +145,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
+# Additional locations of static files
+STATICFILES_DIRS = (
+    # Put strings here, like "/home/html/static" or "C:/www/django/static".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+)
+
+# List of finder classes that know how to find static files in
+# various locations.
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'djangobower.finders.BowerFinder',
+)
 #YOUR_S3_BUCKET = "spacetime-testing-sqlite"
 #
 #STATICFILES_STORAGE = "django_s3_storage.storage.StaticS3Storage"
@@ -166,3 +186,10 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10
 }
+
+BOWER_INSTALLED_APPS = (
+    'jquery',
+    'jquery-ui',
+    'bootstrap',
+    'fullcalendar#3.8.2'
+)

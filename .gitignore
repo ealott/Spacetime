@@ -3,3 +3,6 @@ makerspace/handler_venv/
 venv/
 env/
 makerspace/db.sqlite3
+makerspace/bower_components/
+ass
+makerspace/assets

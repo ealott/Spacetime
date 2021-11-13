@@ -15,9 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import url
+from django.views.generic import TemplateView
+
 from rest_framework import routers, serializers, viewsets
 
 from spacetime import views
+
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
@@ -29,6 +33,9 @@ router.register(r'tools', views.ToolViewSet)
 # Additionally, we include login URLs for the browsable API.
 
 urlpatterns = [
+    url(r'^$', TemplateView.as_view(template_name="homepage.html"),),
+    url(r'^schedule/', include('schedule.urls')),
+    url(r'^fullcalendar/', TemplateView.as_view(template_name="fullcalendar.html"), name='fullcalendar'),
     path('', include(router.urls)),    
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
